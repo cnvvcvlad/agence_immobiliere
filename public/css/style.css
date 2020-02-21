@@ -1,0 +1,11 @@
+.div_middle{
+   position:relative;
+   text-align:center;
+}
+
+.text_middle {
+   position:absolute;
+   margin-top: 250px;
+   margin-left:50%;
+   transform: translateX(-50%);
+  }
