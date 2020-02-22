@@ -9,12 +9,30 @@
     <h1 class="text-center">Connexion: </h1>
     <hr>
 <h3>Veuillez vous connecter !</h3>
-{{ form_start(form_connexion) }}
-{{ form_row(form_connexion.email, {"attr": {"class": "form-control"}, "label": "Entrez votre adresse email"}) }}
-{{ form_row(form_connexion.mot_de_passe, {"attr": {"class": "form-control"}, "label": "Entrez votre mot de passe"}) }}
-<br>
-<button type="submit" class="btn btn-success">connexion</button>
-{{ form_end(form_connexion) }}
+<form action=" {{ path('app_login')}}" method="post">
+
+    {% if error %}
+        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}
+
+    {% if app.user %}
+        <div class="mb-3">
+            You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
+        </div>
+    {% endif %}
+
+    <div class="form-group">
+        <input type="email" name="email" placeholder="Identifiant" class="form-control" >
+    </div>
+    
+    <div class="form-group">
+        <input type="password" name="password" placeholder="Mot de passe" class="form-control"  >
+    </div>
+    <input type="hidden" name="_csrf_token"
+           value="{{ csrf_token('authenticate') }}"
+    >
+<button class="btn btn-success" class="form-control">Se connecter</button>
+</form>
 </div>
 
 <div class="col-md-6">
@@ -22,12 +40,12 @@
     <hr>
 <h3>Veuillez vous inscrire !</h3>
 {{ form_start(form_inscription) }}
-{{ form_row(form_inscription.nom, {"attr": {"class": "form-control"}, "label": "Entrez un nom"}) }}
-{{ form_row(form_inscription.prenom, {"attr": {"class": "form-control"}, "label": "Entrez un prénom"}) }}
-{{ form_row(form_inscription.email, {"attr": {"class": "form-control"}, "label": "Entrez un email"}) }}
-{{ form_row(form_inscription.mot_de_passe, {"attr": {"class": "form-control"}, "label": "Entrez un mot de passe"}) }}
-{{ form_row(form_inscription.confirm_mot_de_passe, {"attr": {"class": "form-control"}, "label": "Confirmez le mot de passe"}) }}
-{{ form_row(form_inscription.localisation, {"attr": {"class": "form-control"}, "label": "Entrez une ville"}) }}
+{{ form_row(form_inscription.nom,  {"label": "Entrez un nom"}) }}
+{{ form_row(form_inscription.prenom,  {"label": "Entrez un prénom"}) }}
+{{ form_row(form_inscription.email,  {"label": "Entrez un email"}) }}
+{{ form_row(form_inscription.mot_de_passe, {"label": "Entrez un mot de passe"}) }}
+{{ form_row(form_inscription.confirm_mot_de_passe,  {"label": "Confirmez le mot de passe"}) }}
+{{ form_row(form_inscription.localisation, {"label": "Entrez une ville"}) }}
 <br>
 <button type="submit" class="btn btn-success">inscription</button>
 {{ form_end(form_inscription) }}

@@ -6,17 +6,20 @@ use App\Entity\Membres;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 
 class InscriptionType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('nom')
-            ->add('prenom')
-            ->add('email')
-            ->add('mot_de_passe')
-            ->add('confirm_mot_de_passe')
+            ->add('nom', TextType::class)
+            ->add('prenom', TextType::class)
+            ->add('email' ,EmailType::class)
+            ->add('mot_de_passe', PasswordType::class)
+            ->add('confirm_mot_de_passe', PasswordType::class)
             ->add('localisation')
         ;
     }

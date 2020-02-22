@@ -3,11 +3,16 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\MembresRepository")
+ * @UniqueEntity(fields="email", message="L'email que vous avez saisi est déjà utilisé!")
  */
-class Membres
+class Membres implements UserInterface
 {
     /**
      * @ORM\Id()
@@ -28,14 +33,19 @@ class Membres
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Email(message="L'email renseigné est invalide")
      */
     private $email;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\EqualTo(propertyPath="confirm_mot_de_passe", message="")
      */
     private $mot_de_passe;
 
+    /**
+     * @Assert\EqualTo(propertyPath="mot_de_passe", message="Les deux mots de passe doivent être identiques!")
+     */
     private $confirm_mot_de_passe;
 
     /**
@@ -44,7 +54,7 @@ class Membres
     private $localisation;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime",options={"default" : "CURRENT_TIMESTAMP"})
      */
     private $date_inscription;
 
@@ -150,6 +160,53 @@ class Membres
     public function setRole(string $role): self
     {
         $this->role = $role;
+
+        return $this;
+    }
+
+    public function eraseCredentials(){}
+
+    /**
+     * A visual identifier that represents this user.
+     *
+     * @see UserInterface
+     */
+    public function getUsername(): ?string
+    {
+        return $this->prenom . " " . $this->nom;
+    }
+
+    /**
+     * @see UserInterface
+     */
+    public function getSalt()
+    {
+        // not needed when using the "bcrypt" algorithm in security.yaml
+    }
+
+    /**
+     * @see UserInterface
+     */
+    public function getRoles()
+    {
+        return array('ROLE_USER');
+    }
+
+    public function setRoles(array $roles)
+    {
+    }
+
+    /**
+     * @see UserInterface
+     */
+    public function getPassword(): string
+    {
+        return (string) $this->mot_de_passe;
+    }
+
+    public function setPassword(string $password): self
+    {
+        $this->mot_de_passe = $password;
 
         return $this;
     }
