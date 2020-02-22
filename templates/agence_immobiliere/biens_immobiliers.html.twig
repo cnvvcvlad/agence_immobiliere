@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Immobilier.com | Nos biens immobiliers{% endblock %}
+
+{% block body %}
+<h1 class="text-center">Nos biens: </h1>
+<hr>
+
+<div class="container">
+{% for bien_immo in biens_immo %}
+<p>Type d'habitation: {{ bien_immo.type }}</p>
+<p>Surface: {{ bien_immo.surface }} m²</p>
+<p>Prix: {{ bien_immo.prix }} €</p>
+<p>localisation: {{ bien_immo.localisation }}</p>
+<p>Date de mise en ligne: {{ bien_immo.dateDeCreation | date("d/m/Y à H:i") }}</p>
+<hr>
+{% endfor %}
+</div>
+{% endblock %}

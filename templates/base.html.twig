@@ -19,7 +19,7 @@
     <body>
         <header>
   <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-    <a class="navbar-brand" href="#">Immobilier.com</a>
+    <a class="navbar-brand" href="{{ path("home") }}">Immobilier.com</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -28,7 +28,7 @@
       <div class="div-inline mt-2 mt-md-0">
       <ul class="navbar-nav">
         <li class="nav-item active">
-          <a class="nav-link" href="#">Nos biens</a>
+          <a class="nav-link" href="{{ path("biens_immobiliers") }}">Nos biens</a>
         </li>
         <li class="nav-item active">
           <a class="nav-link" href="#">Nos agences</a>
@@ -37,13 +37,14 @@
           <a class="nav-link" href="#">Nous contacter</a>
         </li>
       <li class="nav-item active">
-        <a class="btn btn-outline-light text-light">Mon compte</a>
+        <a class="btn btn-outline-light text-light" href="{{ path("authentification") }}">Mon compte</a>
         </li>
         </ul>
       </div>
     </div>
   </nav>
-</header>tline-primary" href="#">Mon compte</a>
+</header>
+<br><br><br>
 </div>
         {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
