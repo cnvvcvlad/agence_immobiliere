@@ -53,6 +53,7 @@ class Membres
      */
     private $role;
 
+
     public function getId(): ?int
     {
         return $this->id;
@@ -153,4 +154,5 @@ class Membres
 
         return $this;
     }
+
 }

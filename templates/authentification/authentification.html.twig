@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Immobilier.com | Authentification{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h1 class="text-center">Connexion: </h1>
+                <hr>
+                <h3>Veuillez vous connecter !</h3>
+                {{ form_start(form_connexion) }}
+                {{ form_row(form_connexion.email, {"attr": {"class": "form-control"}, "label": "Entrez votre adresse email"}) }}
+                {{ form_row(form_connexion.mot_de_passe, {"attr": {"class": "form-control"}, "label": "Entrez votre mot de passe"}) }}
+                <br>
+                <button type="submit" class="btn btn-success">connexion</button>
+                {{ form_end(form_connexion) }}
+            </div>
+
+            <div class="col-md-6">
+                <h1 class="text-center">Inscription: </h1>
+                <hr>
+                <h3>Veuillez vous inscrire !</h3>
+                {{ form_start(form_inscription) }}
+                {{ form_row(form_inscription.nom, {"attr": {"class": "form-control"}, "label": "Entrez un nom"}) }}
+                {{ form_row(form_inscription.prenom, {"attr": {"class": "form-control"}, "label": "Entrez un prénom"}) }}
+                {{ form_row(form_inscription.email, {"attr": {"class": "form-control"}, "label": "Entrez un email"}) }}
+                {{ form_row(form_inscription.mot_de_passe, {"attr": {"class": "form-control"}, "label": "Entrez un mot de passe"}) }}
+                {{ form_row(form_inscription.confirm_mot_de_passe, {"attr": {"class": "form-control"}, "label": "Confirmez le mot de passe"}) }}
+                {{ form_row(form_inscription.localisation, {"attr": {"class": "form-control"}, "label": "Entrez une ville"}) }}
+                {{ form_row(form_inscription.agreeTerms) }}
+                <br>
+                <p><button type="submit" class="btn btn-success">inscription</button></p>
+                {{ form_end(form_inscription) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}
