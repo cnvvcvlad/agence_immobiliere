@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="fr" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="RW_SoRT" resname="User successfully registered">
+        <source>User successfully registered</source>
+        <target>Utilisateur enregistré avec succès</target>
+      </trans-unit>
+      <trans-unit id="KxwXLhy" resname="Our properties">
+        <source>Our properties</source>
+        <target>Nos biens</target>
+      </trans-unit>
+      <trans-unit id="PtQ.i3Q" resname="Our agencies">
+        <source>Our agencies</source>
+        <target>Nos agences</target>
+      </trans-unit>
+      <trans-unit id="R6rzG4P" resname="Contact us">
+        <source>Contact us</source>
+        <target>Nous contacter</target>
+      </trans-unit>
+      <trans-unit id="tTGBpNh" resname="My account">
+        <source>My account</source>
+        <target>Mon compte</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
