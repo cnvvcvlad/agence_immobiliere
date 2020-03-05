@@ -3,11 +3,12 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\MembresRepository")
  */
-class Membres
+class Membres implements UserInterface
 {
     /**
      * @ORM\Id()
@@ -59,17 +60,18 @@ class Membres
         return $this->id;
     }
 
-    public function getNom(): ?string
+public
+function getNom(): ?string
     {
         return $this->nom;
     }
 
     public function setNom(string $nom): self
-    {
-        $this->nom = $nom;
+{
+    $this->nom = $nom;
 
-        return $this;
-    }
+    return $this;
+}
 
     public function getPrenom(): ?string
     {
@@ -77,11 +79,11 @@ class Membres
     }
 
     public function setPrenom(string $prenom): self
-    {
-        $this->prenom = $prenom;
+{
+    $this->prenom = $prenom;
 
-        return $this;
-    }
+    return $this;
+}
 
     public function getEmail(): ?string
     {
@@ -89,23 +91,23 @@ class Membres
     }
 
     public function setEmail(string $email): self
-    {
-        $this->email = $email;
+{
+    $this->email = $email;
 
-        return $this;
-    }
+    return $this;
+}
 
     public function getMotDePasse(): ?string
     {
         return $this->mot_de_passe;
     }
 
-    public function setMotDePasse(string $mot_de_passe): self
-    {
-        $this->mot_de_passe = $mot_de_passe;
+    public function setMotDePasse(?string $mot_de_passe): self
+{
+    $this->mot_de_passe = $mot_de_passe;
 
-        return $this;
-    }
+    return $this;
+}
 
     public function getConfirmMotDePasse(): ?string
     {
@@ -113,11 +115,11 @@ class Membres
     }
 
     public function setConfirmMotDePasse(string $confirm_mot_de_passe): self
-    {
-        $this->confirm_mot_de_passe = $confirm_mot_de_passe;
+{
+    $this->confirm_mot_de_passe = $confirm_mot_de_passe;
 
-        return $this;
-    }
+    return $this;
+}
 
     public function getLocalisation(): ?string
     {
@@ -125,11 +127,11 @@ class Membres
     }
 
     public function setLocalisation(string $localisation): self
-    {
-        $this->localisation = $localisation;
+{
+    $this->localisation = $localisation;
 
-        return $this;
-    }
+    return $this;
+}
 
     public function getDateInscription(): ?\DateTimeInterface
     {
@@ -137,11 +139,11 @@ class Membres
     }
 
     public function setDateInscription(\DateTimeInterface $date_inscription): self
-    {
-        $this->date_inscription = $date_inscription;
+{
+    $this->date_inscription = $date_inscription;
 
-        return $this;
-    }
+    return $this;
+}
 
     public function getRole(): ?string
     {
@@ -149,10 +151,50 @@ class Membres
     }
 
     public function setRole(string $role): self
-    {
-        $this->role = $role;
+{
+    $this->role = $role;
 
-        return $this;
-    }
+    return $this;
+}
+
+    /**
+     * @see UserInterface
+     */
+    public function getSalt()
+{
+    // not needed when using the "bcrypt" algorithm in security.yaml
+}
+
+    /**
+     * @see UserInterface
+     */
+    public function eraseCredentials()
+{
+//         If you store any temporary, sensitive data on the user, clear it here
+//         $this->plainPassword = null;
+}
+    /**
+     * @see UserInterface
+     */
+    public function getUsername()
+{
+    return $this->email;
+}
+
+    /**
+     * @see UserInterface
+     */
+    public function getRoles()
+{
+    return ['ROLE_USER'];
+}
+
+    /**
+     * @see UserInterface
+     */
+    public function getPassword()
+{
+    // leaving blank - I don't need/have a password!
+}
 
 }
